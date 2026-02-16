@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>僕について</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* 🌼 ふわスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌸 ナビバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;   /* ← 追加 */
+  height: 60px;
+
+  margin: 0;  /* ← 追加（念のため） */
+
+  background: rgba(255, 240, 150, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  writing-mode: horizontal-tb;
+  z-index: 9999; /* ← 少し強く */
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a87400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🐣 ページ全体 */
+body {
+  margin: 0;              /* ← まずゼロにする */
+  padding-top: 40px;      /* ← ナビ高さ分だけ空ける */
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin: 50px;
+  line-height: 3;
+  color: #b38b00;
+  overflow-x: auto;
+
+  /* 🌟 ぽわぽわ背景 */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,200,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,240,150,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(255,230,120,0.4) 0%, transparent 60%),
+    #fffdf2;
+}
+
+main {
+  animation: breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center;
+}
+
+/* 🌬 呼吸 */
+@keyframes breathe {
+  0%   { transform: scale(1); filter: brightness(1.03); }
+  50%  { transform: scale(1.02); filter: brightness(1.08); }
+  100% { transform: scale(1); filter: brightness(1.03); }
+}
+
+/* 🌟 巨大タイトルエリア */
+.hero {
+  margin-left: 90px;
+  background: linear-gradient(180deg, #ffe066, #ffd84d);
+  padding: 30px;
+  border-radius: 60px;
+  box-shadow: 0 20px 40px rgba(255, 200, 0, 0.6);
+
+  /* 指定変更 */
+  width: 25vh;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✨ タイトル強調 */
+.hero h1 {
+  font-size: 60px; /* ← 変更 */
+  letter-spacing: 12px;
+  font-weight: bold;
+  color: #a87400;
+
+  text-shadow:
+    0 0 15px #fff9c4,
+    0 0 30px #fff3a8,
+    0 0 45px rgba(255, 220, 120, 0.8);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* タイトルふわ光 */
+@keyframes titleGlow {
+  from {
+    text-shadow:
+      0 0 10px #fff9c4,
+      0 0 20px #fff3a8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #fff9c4,
+      0 0 40px #ffe066,
+      0 0 60px rgba(255, 220, 120, 0.9);
+  }
+}
+
+/* 🌼 セクション */
+section {
+  margin-left: 90px;
+  background: #fff3a8;
+  padding: 25px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+  min-height: 60vh;
+}
+
+/* 🐥 通常タイトル */
+section h1 {
+  font-size: 30px;
+  background: #ffd84d;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #fff6c5;
+}
+
+/* 📖 本文 */
+p {
+  font-size: 18px;
+}
+
+/*アイコン*/
+.icon {
+  width: 180px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+/* 🌟 ぽよん */
+h1, p, a, span, .icon, div {
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+h1:active,
+p:active,
+a:active,
+span:active,
+.icon:active,
+div:active {
+  animation: poyon 0.3s ease;
+}
+
+@keyframes poyon {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 🌼 スクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffe066;
+  border-radius: 20px;
+  border: 3px solid #fffdf2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+  <a href="ieinagami.html">ホーム</a>
+  <a href="bokunituite.html">僕について</a>
+  <a href="kotobamatome.html">言葉纏め</a>
+  <a href="links.html">リンク</a>
+</nav>
+<div class="hero">
+  <h1>僕について</h1>
+</div>
+<main>
+
+<section>
+
+<h1>ラッキーこたつむり</h1><br>
+
+<!-- アイコン -->
+<img src="https://raw.githubusercontent.com/rakkikotatumuri/rakkikotatumuri.github.io/main/icon.png"
+     alt="こたくんのアイコン"
+     class="icon">
+
+<p>ラッキーボーナスィェィ</p>
+<p>中参の黄色が好きなこたくんです。</p>
+<p>ちなみに勉強は中壱の弐学期の期末テストで学年弐位とれたくらいにはしてます。（自慢）</p>
+<p>得意教科は英語,理科,数学、苦手教科は暗記科目と技能科です</p>
+<p>編集やイラストやMIXは自分で基本やっています</p>
+<p>主に歌い手などとして活動しています</p>
+<p>ちなみに「かたつむり軍団」と「ラッキーボーナスクラブ」のリーダーやってます</p>
+<p>勉強などもあるので不定期ですがよろしくお願いします</p>
+<p>時期によっては出来ないけどコラボとか誘ってくれると嬉しいです</p>
+
+</section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>言葉纏め</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+@font-face {
+    font-family: "umyarisu5";
+    src: url("https://raw.githubusercontent.com/rakkikotatumuri/fontshu-/main/ushamoaman5.otf") format("opentype");
+}
+
+.umyarisu {
+  font-family: "umyarisu5", sans-serif;
+}
+
+/* 🌼 ふわスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌸 ナビバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;   /* ← 追加 */
+  height: 60px;
+
+  margin: 0;  /* ← 追加（念のため） */
+
+  background: rgba(255, 240, 150, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  writing-mode: horizontal-tb;
+  z-index: 9999; /* ← 少し強く */
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a87400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🐣 ページ全体 */
+body {
+  margin: 0;              /* ← まずゼロにする */
+  padding-top: 40px;      /* ← ナビ高さ分だけ空ける */
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin: 50px;
+  line-height: 3;
+  color: #b38b00;
+  overflow-x: auto;
+
+  /* 🌟 ぽわぽわ背景 */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,200,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,240,150,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(255,230,120,0.4) 0%, transparent 60%),
+    #fffdf2;
+}
+
+main {
+  animation: breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center;
+}
+
+/* 🌬 呼吸 */
+@keyframes breathe {
+  0%   { transform: scale(1); filter: brightness(1.03); }
+  50%  { transform: scale(1.02); filter: brightness(1.08); }
+  100% { transform: scale(1); filter: brightness(1.03); }
+}
+
+/* 🌟 巨大タイトルエリア */
+.hero {
+  margin-left: 90px;
+  background: linear-gradient(180deg, #ffe066, #ffd84d);
+  padding: 30px;
+  border-radius: 60px;
+  box-shadow: 0 20px 40px rgba(255, 200, 0, 0.6);
+
+  /* 指定変更 */
+  width: 25vh;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✨ タイトル強調 */
+.hero h1 {
+  font-size: 60px; /* ← 変更 */
+  letter-spacing: 12px;
+  font-weight: bold;
+  color: #a87400;
+
+  text-shadow:
+    0 0 15px #fff9c4,
+    0 0 30px #fff3a8,
+    0 0 45px rgba(255, 220, 120, 0.8);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* タイトルふわ光 */
+@keyframes titleGlow {
+  from {
+    text-shadow:
+      0 0 10px #fff9c4,
+      0 0 20px #fff3a8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #fff9c4,
+      0 0 40px #ffe066,
+      0 0 60px rgba(255, 220, 120, 0.9);
+  }
+}
+
+/* 🌼 セクション */
+section {
+  margin-left: 90px;
+  background: #fff3a8;
+  padding: 25px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+  min-height: 60vh;
+}
+
+/* 🐥 通常タイトル */
+section h1 {
+  font-size: 30px;
+  background: #ffd84d;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #fff6c5;
+}
+
+/* 📖 本文 */
+p {
+  font-size: 18px;
+}
+
+/*アイコン*/
+.icon {
+  width: 180px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+/* 🌟 ぽよん */
+h1, p, a, span, .icon, .lang-btn, div {
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+h1:active,
+p:active,
+a:active,
+span:active,
+.icon:active,
+.lang-btn:active,
+div:active {
+  animation: poyon 0.3s ease;
+}
+
+@keyframes poyon {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 🌼 スクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffe066;
+  border-radius: 20px;
+  border: 3px solid #fffdf2;
+}
+
+.language-list {
+  margin-left: 60px;
+  display: flex;
+  gap: 60px;
+
+  flex-wrap: wrap;   /* ← これ追加 */
+  align-content: flex-start;
+}
+
+.lang-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto; 
+
+  width: 90px;          /* 横幅固定 */
+  height: 240px;        /* ← ここで縦長にする */
+
+  background: #ffd84d;
+  border-radius: 50px;  /* ピル型 */
+  text-decoration: none;
+  color: #b38b00;
+  font-weight: bold;
+
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.5);
+  transition: all 0.2s ease;
+}
+
+/* ふわっと浮く */
+.lang-btn:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 216, 77, 0.7);
+}
+
+/* ぽよん */
+.lang-btn:active {
+  animation: poyon 0.3s ease;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<nav class="navbar">
+  <a href="ieinagami.html">ホーム</a>
+  <a href="bokunituite.html">僕について</a>
+  <a href="kotobamatome.html">言葉纏め</a>
+  <a href="links.html">リンク</a>
+</nav>
+<div class="hero">
+  <h1>言葉纏め</h1>
+</div>
+<main>
+
+<section>
+
+  <h1>概要</h1>
+  <p>ラッキーボーナスィェィ！こたくんだよ！</p>
+  <p>僕の作った言葉について伝える爲に書き記した稲紙（ウェブサイト）だよ</p>
+  <p>此の稲紙では様々な言語を使っていくよ</p>
+  <p>又、大和言葉(日本語)を使う時は主に真の(純粋な)大和言葉を使っていくよ</p>
+  <p>難そうなものには（）内に外来語に直したものを書いてみたよ</p>
+  <p>僕が主に使う大和言葉をまとめた稲紙もあるから見てってね</p>
+<a href="https://zpdic.ziphil.com/dictionary/4461">こたつむりによる真大和言葉</a>
+
+</section>
+
+<section>
+  <h1>言葉纏め</h1>
+
+  <p>ラッキーボーナスィェィ！こたくんだよ！</p>
+  <p>僕の作った言葉について伝える爲に書き記した稲紙だよ</p>
+  <p>此の稲紙では様々な言語を使っていくよ</p>
+  <p>主に使う言葉をまとめたよ。気になるものを押してね。</p>
+
+<div class="language-list">
+
+  <a href="kotakotoba.html" class="lang-btn">こた言葉</a>
+  <a href="kamisakikogo.html" class="lang-btn">上防虎语</a>
+  <a href="umyarisu.html" class="lang-btn umyarisu">うマりす語</a>
+  <a href="kotatumuriniyorumayamatokotoba.html" class="lang-btn">こたつむりによる真大和言葉</a>
+  <a href="kaktego.html" class="lang-btn">⻆体语</a>
+  <a href="katatumuri-maimai-tuburi.html" class="lang-btn">かたつむりの言語（かたつむり＜か蝸り蝸か蝸り蝸＞つむ蝸り）</a>
+  <a href="uminogengo.html" class="lang-btn">海の言語</a>
+  <a href="kawaihougen.html" class="lang-btn">可愛方言</a>
+  <a href="kokusaihozyogo1.html" class="lang-btn">全人類発話可能的言語一（仮）</a>
+  <a href="nitihanhozyogo.html" class="lang-btn">日韓補助語한일 보조어</a>
+
+</div>
+</section>
+
+
+</main>
+</body>
+</html>

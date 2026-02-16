@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>こた言葉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* 🌼 ふわスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌸 ナビバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;   /* ← 追加 */
+  height: 60px;
+
+  margin: 0;  /* ← 追加（念のため） */
+
+  background: rgba(255, 240, 150, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  writing-mode: horizontal-tb;
+  z-index: 9999; /* ← 少し強く */
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a87400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🐣 ページ全体 */
+body {
+  margin: 0;              /* ← まずゼロにする */
+  padding-top: 40px;      /* ← ナビ高さ分だけ空ける */
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin: 50px;
+  line-height: 3;
+  color: #b38b00;
+  overflow-x: auto;
+
+  /* 🌟 ぽわぽわ背景 */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,200,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,240,150,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(255,230,120,0.4) 0%, transparent 60%),
+    #fffdf2;
+}
+
+main {
+  animation: breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center;
+}
+
+/* 🌬 呼吸 */
+@keyframes breathe {
+  0%   { transform: scale(1); filter: brightness(1.03); }
+  50%  { transform: scale(1.005); filter: brightness(1.08); }
+  100% { transform: scale(1); filter: brightness(1.03); }
+}
+
+/* 🌟 巨大タイトルエリア */
+.hero {
+  margin-left: 90px;
+  background: linear-gradient(180deg, #ffe066, #ffd84d);
+  padding: 30px;
+  border-radius: 60px;
+  box-shadow: 0 20px 40px rgba(255, 200, 0, 0.6);
+
+  /* 指定変更 */
+  width: 25vh;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✨ タイトル強調 */
+.hero h1 {
+  font-size: 60px; /* ← 変更 */
+  letter-spacing: 12px;
+  font-weight: bold;
+  color: #a87400;
+
+  text-shadow:
+    0 0 15px #fff9c4,
+    0 0 30px #fff3a8,
+    0 0 45px rgba(255, 220, 120, 0.8);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* タイトルふわ光 */
+@keyframes titleGlow {
+  from {
+    text-shadow:
+      0 0 10px #fff9c4,
+      0 0 20px #fff3a8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #fff9c4,
+      0 0 40px #ffe066,
+      0 0 60px rgba(255, 220, 120, 0.9);
+  }
+}
+
+/* 🌼 セクション */
+section {
+  margin-left: 90px;
+  background: #fff3a8;
+  padding: 25px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+  min-height: 60vh;
+}
+
+/* 🐥 通常タイトル */
+section h1 {
+  font-size: 30px;
+  background: #ffd84d;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #fff6c5;
+}
+
+/* 📖 本文 */
+p {
+  font-size: 18px;
+}
+
+/*アイコン*/
+.icon {
+  width: 180px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+.kotazi {
+  width: 250px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+ul {
+  margin-left: 40px;
+}
+
+/* 🌟 ぽよん */
+h1, p, a, span, .icon, h2, h3, ul, li, .kotazi div {
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+h1:active,
+p:active,
+a:active,
+span:active,
+.icon:active,
+h2:active,
+h3:active,
+ul:active,
+li:active,
+.kotazi:active,
+div:active {
+  animation: poyon 0.3s ease;
+}
+
+@keyframes poyon {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 🌼 スクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffe066;
+  border-radius: 20px;
+  border: 3px solid #fffdf2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="ieinagami.html">ホーム</a>
+  <a href="bokunituite.html">僕について</a>
+  <a href="kotobamatome.html">言葉纏め</a>
+  <a href="links.html">リンク</a>
+</div>
+
+<div class="hero">
+  <h1>こた言葉</h1>
+</div>
+<main>
+
+<main>
+
+<section>
+
+<h1>こた言𫟒とは？</h1>
+
+<p>こた言葉とは、僕がいつも話してる言葉の事で、主にお国言葉（方言）や訛りに分けられるものだと思うよ</p>
+<p>いわゆる中二病がかっこつけて話してる的なものかもしれないね</p>
+<p>因みにこた言葉では、話す際の発音と書く時の文字、仮名遣いも含めるよ</p>
+
+<h2>成り立ち</h2>
+
+<p>成り立ち的には様々な方言とか言語が混ざった感じかな</p>
+<p>混ざった物一覧←</p>
+
+<ul>
+<li>標準語</li>
+<li>地元の方言</li>
+<li>関西弁</li>
+<li>上代日本語（当時の発音）</li>
+<li>中文（極少）</li>
+<li>한국어</li>
+<li>English（一部英国由来？）</li>
+<li>その他の細かい日本各地の方言</li>
+<li>自然発生的な僕の言い方</li>
+</ul>
+</section>
+
+<section>
+<h1>話し方</h1>
+
+<h2>発音について</h2>
+<p>こた言葉では同じ一言葉（単語）であっても異なる発音をすることが度々あるよ</p>
+<p>（例）今日…きょう[きょー]、けふ、けう、겨ー、けぷ、けー</p>
+
+<h2>変わり方まとめ</h2>
+
+<h3>規則的な変わり方</h3>
+<ul>
+<il>規則的な変わり方
+<li>ら行…ㄹと前の音の長音の中間くらいの音で発すことが多い</li>
+<li>～は（助詞）…前の音の子音＋aー</li>
+<li>あ行＋う…あ行の子音＋어ー</li>
+<li>た…てぇゃ</li>
+<li>だ…でぇゃ</li>
+<li>は行…ぱ行</li>
+<li>わ行…ば行</li>
+<li>あ行＋い行…前の子音+ゃぁ</li>
+</ul>
+
+<h3>全体的な変わり方</h3>
+<ul>
+<li>한국어やEnglishなどの外来語は中間的発音</li>
+<li>濁音や鼻濁音っぽくなる</li>
+<li>語尾が促音や長音になる</li>
+<li>あ行寄りの親音になることがある</li>
+</ul>
+
+<h3>語彙ごとの変化</h3>
+<ul>
+<li>今日…きょう、けふ、겨ー 等</li>
+<li>事…こっ、것</li>
+<li>物…もん</li>
+<li>すること…すっこっ</li>
+<li>したらば…したㄹば</li>
+<li>曲…きょっ</li>
+<li>罰…ばっ</li>
+<li>十中八九…じっちーへっく</li>
+<li>僕は…bㅓかぁ</li>
+<li>僕も…bㅓっもぉ</li>
+<li>やつは…やつぁー</li>
+<li>～だ…～でぇぁ</li>
+<li>～ね…～ねぁ</li>
+<li>～しまった…しもぉた</li>
+<li>～しよう…しょう、しょー、しやー、し여ー</li>
+<li>様…やー、여ー、よー</li>
+<li>だから…だー（弱く「か」「ら」も発音）</li>
+<li>げぇぐぎん…外国人</li>
+</ul>
+</section>
+
+<section>
+<h2>此稲紙（ウェブサイト）内での発す音の表し方まとめ</h2>
+<ul>
+<li>・上のら行の音はㄹと表す
+<li>・小さい音はその名を,で囲む　例　や,ん,け
+<li>・ㅓやㅡなど日本語で表記できず濁音など日本語だけにしかない音の組み合わせなどの音の場合「bㅓ」などのように表記する
+</ul>
+</section>
+
+<section>
+<h2>文方（文法）まとめ</h2>
+<p>※（）は補足、[]は発音、{}は書き方</p>
+
+<ul>
+<li>～け（文末）…～だね、～でしょ</li>
+<li>～け（接続）…～ので、～から</li>
+<li>～じゃんけ…～じゃん</li>
+<li>～じゃけぇ…～だから</li>
+<li>動詞＋たる…～してる</li>
+<li>～だ…～じゃ</li>
+<li>～のぉ…～だよね</li>
+</ul>
+<h2>语汇（語彙）（外元言葉も含む）</h2>
+<ul>
+<li>・しょうがん{しょうがぬ}（最近は使用頻度減少中）…しょうがない
+<li>・おっぺす{おっ圧す}…押す
+<li>・おっぱなす{おっ放す}…放つ
+<li>・いきあう、いきゃーう{行き会う}…行った先で偶然知り合いと会う
+<li>・よぉいじゃねぇ{容易じゃない}…簡単じゃない
+<li>・ぜんぜんぜんぜん{全然 〱}…全然
+<li>・～などなどいう{など〱言う（云う）}…～という、～などという
+<li>・～たぁ言えど（云えど）…～とは言えど、～とはいっても
+</ul>
+</section>
+
+<section>
+<h1>書き方</h1>
+
+<h2>名（文字）</h2>
+
+<p>漢字は旧字体・簡体字・新字体・自作簡略字を使い分ける</p>
+<p>平仮名は変体仮名なども混ぜる</p>
+<p>外元言葉は元の言語名で書く</p>
+<p>〱を使用することがある</p>
+
+<h2>仆が简略化した唐の字</h2>
+
+<img src="https://raw.githubusercontent.com/rakkikotatumuri/rakkikotatumuri.github.io/main/kotaturyakuzi1.jpg" class="kotazi">
+<img src="https://raw.githubusercontent.com/rakkikotatumuri/rakkikotatumuri.github.io/main/kotaturyakuzi2.jpg" class="kotazi">
+
+</section>
+
+</main>
+</body>
+</html>
+</body>
+</html>

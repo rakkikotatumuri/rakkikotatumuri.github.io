@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>上防虎语</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* 🌼 ふわスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌸 ナビバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;   /* ← 追加 */
+  height: 60px;
+
+  margin: 0;  /* ← 追加（念のため） */
+
+  background: rgba(255, 240, 150, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  writing-mode: horizontal-tb;
+  z-index: 9999; /* ← 少し強く */
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a87400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🐣 ページ全体 */
+body {
+  margin: 0;              /* ← まずゼロにする */
+  padding-top: 40px;      /* ← ナビ高さ分だけ空ける */
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin: 50px;
+  line-height: 3;
+  color: #b38b00;
+  overflow-x: auto;
+
+  /* 🌟 ぽわぽわ背景 */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,200,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,240,150,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(255,230,120,0.4) 0%, transparent 60%),
+    #fffdf2;
+}
+
+main {
+  animation: breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center;
+}
+
+/* 🌬 呼吸 */
+@keyframes breathe {
+  0%   { transform: scale(1); filter: brightness(1.03); }
+  50%  { transform: scale(1.005); filter: brightness(1.08); }
+  100% { transform: scale(1); filter: brightness(1.03); }
+}
+
+/* 🌟 巨大タイトルエリア */
+.hero {
+  margin-left: 90px;
+  background: linear-gradient(180deg, #ffe066, #ffd84d);
+  padding: 30px;
+  border-radius: 60px;
+  box-shadow: 0 20px 40px rgba(255, 200, 0, 0.6);
+
+  /* 指定変更 */
+  width: 25vh;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✨ タイトル強調 */
+.hero h1 {
+  font-size: 60px; /* ← 変更 */
+  letter-spacing: 12px;
+  font-weight: bold;
+  color: #a87400;
+
+  text-shadow:
+    0 0 15px #fff9c4,
+    0 0 30px #fff3a8,
+    0 0 45px rgba(255, 220, 120, 0.8);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* タイトルふわ光 */
+@keyframes titleGlow {
+  from {
+    text-shadow:
+      0 0 10px #fff9c4,
+      0 0 20px #fff3a8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #fff9c4,
+      0 0 40px #ffe066,
+      0 0 60px rgba(255, 220, 120, 0.9);
+  }
+}
+
+/* 🌼 セクション */
+section {
+  margin-left: 90px;
+  background: #fff3a8;
+  padding: 25px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+  min-height: 60vh;
+}
+
+/* 🐥 通常タイトル */
+section h1 {
+  font-size: 30px;
+  background: #ffd84d;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #fff6c5;
+}
+
+/* 📖 本文 */
+p {
+  font-size: 18px;
+}
+
+/*アイコン*/
+.icon {
+  width: 180px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+.kotazi {
+  width: 250px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+ul {
+  margin-left: 40px;
+}
+
+/* 🌟 ぽよん */
+h1, p, a, span, .icon, h2, h3, .content-img div {
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+h1:active,
+p:active,
+a:active,
+span:active,
+.icon:active,
+h2:active,
+h3:active,
+.content-img:active,
+.content-img2:active,
+div:active {
+  animation: poyon 0.3s ease;
+}
+
+@keyframes poyon {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 🌼 スクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffe066;
+  border-radius: 20px;
+  border: 3px solid #fffdf2;
+}
+
+/* 画像 */
+.content-img {
+  width: 300px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+.content-img2 {
+  width: 600px;
+  border-radius: 60px;
+  margin-left: 80px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+/* リンクボタン */
+.button-area {
+  margin-left: 60px;
+}
+
+.vertical-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 220px;
+  background: #ffd84d;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #b38b00;
+  font-weight: bold;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.5);
+  transition: all 0.2s ease;
+}
+
+.vertical-btn:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.vertical-btn:active {
+  animation: poyon 0.3s ease;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="ieinagami.html">ホーム</a>
+  <a href="bokunituite.html">僕について</a>
+  <a href="kotobamatome.html">言葉纏め</a>
+  <a href="links.html">リンク</a>
+</div>
+
+<!-- hero -->
+<div class="hero">
+  <h1>上防虎语</h1>
+</div>
+
+<main>
+
+<section>
+
+<h1>名（文字）</h1>
+
+<img src="https://raw.githubusercontent.com/rakkikotatumuri/rakkikotatumuri.github.io/main/km%20(1).png" class="content-img">
+</section>
+
+<section>
+<h1>言葉の設け定め（設定）</h1>
+
+<p>今の大和言葉（日本語）とは別の分かれた大和言葉</p>
+<p>今の大和言葉では「です、ます」などの言尾（語尾）の使われているが、それはここ幾百つ年になってからです</p>
+<p>だから今、当たり前だと思っている書き方を一回忘れ、かつての大和言葉をもとにかわっていった言葉というものを考えてみました</p>
+<p>名は主に縦書きで筆で書くことを考えて作りました</p>
+<p>なので、筆っぽい名の形になっています</p>
+<p>真（実際）に書くときは崩し字のようにつなげて書きやすいように名の形を唐（漢,中国）の名を崩しながら色々試しました</p>
+
+<p>大和言葉にない平仮名を金脳（パソコン）で打つときの変わり方</p>
+<p>←</p>
+<p>tsa↓サ　tsi↓シ　tsu↓ス　tse↓セ　tso↓ソ　tu↓つ</p>
+<p>wi↓ゐ　wu↓ヴ　we↓ゑ　yi↓ヰ　ye↓ヱ</p>
+
+<p>（音の変わり方）</p>
+<p>・一言葉（単語）の中のsa行→tsa行</p>
+<p>・唐の名のほとんどは大和言葉での漢字の音で発される （その他）</p>
+<p>・助け言葉（助動詞）の後には「、」を横書きでは必ず書き、縦書きでは一名の為くらい開ける</p>
+</section>
+
+<section>
+<h1>地の設け定め</h1>
+
+<p>地は日本国の小笠原諸島のおよそ424.958km北東にある上防虎島（かみさきことう）である</p>
+<p>かつて平安時代に朝廷に遣える知識人が近くの国などからの使者と共に上防虎島に移り住んだ</p>
+<p>其の島は弥彦村ほどの大きさの島である</p>
+<p>また、鎌倉時代頃になるとワタナベタウンからの旅人が来た</p>
+<p>その際に多くの借用語が入ってきた</p>
+<p>また、この島では上防虎祭（かみさきこさい）という行為が行われている</p>
+<p>上防虎祭では６年に一度６年前の言葉や文化を掘り起こし６年前の生活に戻すことで島の伝統を守るというものがである</p>
+<p>それは寅年と未年に行われる</p>
+<p>また、西暦1170年から数え干支が一周する年にはその行事は行われない</p>
+</section>
+
+<section>
+<!-- 辞書ボタン -->
+<div class="button-area">
+  <a href="https://zpdic.ziphil.com/dictionary/kamisakikogo1" class="vertical-btn" target="_blank">
+    <h2>辞書</h2>
+  </a>
+</div>
+</section>
+
+<section>
+<h1>例し文</h1>
+
+<img src="https://raw.githubusercontent.com/rakkikotatumuri/rakkikotatumuri.github.io/main/km%20(2).png" class="content-img2">
+<img src="https://raw.githubusercontent.com/rakkikotatumuri/rakkikotatumuri.github.io/main/km%20(1).jpg" class="content-img">
+
+</section>
+
+</main>
+</body>
+</html>
+</body>
+</html>

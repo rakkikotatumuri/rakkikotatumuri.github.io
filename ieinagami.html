@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>こたくんの家稲紙</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🌼 ふわスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌸 ナビバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;   /* ← 追加 */
+  height: 60px;
+
+  margin: 0;  /* ← 追加（念のため） */
+
+  background: rgba(255, 240, 150, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  writing-mode: horizontal-tb;
+  z-index: 9999; /* ← 少し強く */
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a87400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🐣 ページ全体 */
+body {
+  margin: 0;              /* ← まずゼロにする */
+  padding-top: 40px;      /* ← ナビ高さ分だけ空ける */
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin: 50px;
+  line-height: 3;
+  color: #b38b00;
+  overflow-x: auto;
+
+  /* 🌟 ぽわぽわ背景 */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,200,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,240,150,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(255,230,120,0.4) 0%, transparent 60%),
+    #fffdf2;
+}
+
+main {
+  animation: breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center;
+}
+
+/* 🌬 呼吸 */
+@keyframes breathe {
+  0%   { transform: scale(1); filter: brightness(1.03); }
+  50%  { transform: scale(1.02); filter: brightness(1.08); }
+  100% { transform: scale(1); filter: brightness(1.03); }
+}
+
+/* 🌟 巨大タイトルエリア */
+.hero {
+  margin-left: 90px;
+  background: linear-gradient(180deg, #ffe066, #ffd84d);
+  padding: 30px;
+  border-radius: 60px;
+  box-shadow: 0 20px 40px rgba(255, 200, 0, 0.6);
+
+  /* 指定変更 */
+  width: 25vh;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✨ タイトル強調 */
+.hero h1 {
+  font-size: 60px; /* ← 変更 */
+  letter-spacing: 12px;
+  font-weight: bold;
+  color: #a87400;
+
+  text-shadow:
+    0 0 15px #fff9c4,
+    0 0 30px #fff3a8,
+    0 0 45px rgba(255, 220, 120, 0.8);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* タイトルふわ光 */
+@keyframes titleGlow {
+  from {
+    text-shadow:
+      0 0 10px #fff9c4,
+      0 0 20px #fff3a8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #fff9c4,
+      0 0 40px #ffe066,
+      0 0 60px rgba(255, 220, 120, 0.9);
+  }
+}
+
+/* 🌼 セクション */
+section {
+  margin-left: 90px;
+  background: #fff3a8;
+  padding: 25px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+  min-height: 60vh;
+}
+
+/* 🐥 通常タイトル */
+section h1 {
+  font-size: 30px;
+  background: #ffd84d;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #fff6c5;
+}
+
+/* 📖 本文 */
+p {
+  font-size: 18px;
+}
+
+/* 🌟 ぽよん */
+h1, p, a, span, div {
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+h1:active,
+p:active,
+a:active,
+span:active,
+div:active {
+  animation: poyon 0.3s ease;
+}
+
+@keyframes poyon {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 🌼 スクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffe066;
+  border-radius: 20px;
+  border: 3px solid #fffdf2;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🌸 ナビバー -->
+<div class="navbar">
+  <a href="ieinagami.html">ホーム</a>
+  <a href="bokunituite.html">僕について</a>
+  <a href="kotobamatome.html">言葉纏め</a>
+  <a href="links.html">リンク</a>
+</div>
+
+
+<div class="hero">
+  <h1>こたくんの家稲紙</h1>
+</div>
+<main>
+<section>
+<h1>概要</h1>
+<p>ラッキーボーナスィェィ！</p>
+<p>こたくんだよ！</p>
+<p>ここはぼくの家稲紙（ホームページ）だよ！</p>
+<p>こたくんだよ！</p>
+<p>こたくんだよ！</p>
+<p><a href="https://rakki-kotatumuri.wweb.jp/">初代家稲紙</a>とか<a href="https://sites.google.com/view/kotakunnnoinagami/">前の家稲紙</a>とかから引き継いできた溜め事（データ）なども載せてあるよ</p>
+<p>後、稲脳（AI）を使いながら縦書きにしてみたよ！</p>
+<p>ところで此の文を読んでいて少し怪しがりて（不思議に思って）いると思うけど此の稲紙では僕の好きな感じで文を書いているから外元言葉（外来語）や唐な一言葉(漢語)を除いた元よりある<a href="https://zpdic.ziphil.com/dictionary/4461">大和言葉（純粋な日本語）</a>を使って書いていることが多いよ</p>
+</section>
+</main>
+
+<main>
+<section>
+<h1>リンク集</h1>
+<p><a href="https://www.youtube.com/channel/UCSTSeMOC_kx36iSBDlMhPNg">YouTube（メイン）</a></p>
+<p><a href="https://x.com/kotakunn_3">twitter</a></p>
+<p><a href="https://rakki-kotatumuri.wweb.jp/">初代ホームページ</a></p>
+<p><a href="https://sites.google.com/view/kotakunnnoinagami/">旧ホームページ</a></p>
+<p><a href="https://www.nicovideo.jp/user/133013226">ニコニコ動画</a></p>
+<p><a href="https://www.tiktok.com/@kotakun333">TikTok</a></p>
+<p><a href="https://space.bilibili.com/3546849778600277">BiliBili</a></p>
+<p><a href="https://discord.gg/65Q722r8xn">Discrodサーバー</a></p>
+<p><a href="https://www.youtube.com/channel/UCU_gV2FnE61Lc7lp3__zHLg">こたくんの言葉（YouTube）</a></p>
+<p><a href="https://scratch.mit.edu/users/rakkikotatumuri/">Scratch</a></p>
+<p><a href="https://www.pixiv.net/users/107258091">pixiv</a></p>
+<p><a href="https://marshmallow-qa.com/35jceqcfrbart2e">マシュマロ</a></p><p><a href="https://www.youtube.com/channel/UCK5sQMajdG-ARoWOevHpsfg">YouTube（サブ）</a></p><p><a href="https://lit.link/rakkikotatumuri">Lit.Link</a></p><p><a href="https://twitcasting.tv/rakkikotatumuri">ツイキャス</a></p><p><a href="https://potofu.me/rakki-kotatumuri">POTOFU</a></p><p><a href="https://u.pokekara.com/user/3127118257">Pokekara</a></p><p><a href="https://lin.ee/nMDMJio">公式LINEアカウント</a></p><p><a href="https://linktr.ee/rakki_kotatumuri">LinkTree</a></p>
+<p><a href="https://www.bandlab.com/kotakunn_3">BandLab</a></p><p><a href="https://teller.jp/user/zVPlY9VrMGNN1Rgpz1HjhTmfkMj2">Teller</a></p><p><a href="https://zpdic.ziphil.com/user/rakki-kotatumuri">zpdic</a></p>
+
+</section>
+</main>
+</body>
+</html>
