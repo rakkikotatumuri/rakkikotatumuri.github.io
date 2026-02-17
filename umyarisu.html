@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>うマりす語</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+@font-face {
+    font-family: "umyarisu5";
+    src: url("https://raw.githubusercontent.com/rakkikotatumuri/fontshu-/main/ushamoaman5.otf") format("opentype");
+}
+
+.umyarisu {
+  font-family: "umyarisu5", sans-serif;
+}
+
+/* 🌼 ふわスクロール */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🌸 ナビバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;   /* ← 追加 */
+  height: 60px;
+
+  margin: 0;  /* ← 追加（念のため） */
+
+  background: rgba(255, 240, 150, 0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  writing-mode: horizontal-tb;
+  z-index: 9999; /* ← 少し強く */
+}
+
+
+.navbar a {
+  text-decoration: none;
+  color: #a87400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🐣 ページ全体 */
+body {
+  margin: 0;              /* ← まずゼロにする */
+  padding-top: 40px;      /* ← ナビ高さ分だけ空ける */
+  padding-right: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin: 50px;
+  line-height: 3;
+  color: #b38b00;
+  overflow-x: auto;
+
+  /* 🌟 ぽわぽわ背景 */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,200,0.6) 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255,240,150,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(255,230,120,0.4) 0%, transparent 60%),
+    #fffdf2;
+}
+
+main {
+  animation: breathe 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center;
+}
+
+/* 🌬 呼吸 */
+@keyframes breathe {
+  0%   { transform: scale(1); filter: brightness(1.03); }
+  50%  { transform: scale(1.005); filter: brightness(1.08); }
+  100% { transform: scale(1); filter: brightness(1.03); }
+}
+
+/* 🌟 巨大タイトルエリア */
+.hero {
+  margin-left: 90px;
+  background: linear-gradient(180deg, #ffe066, #ffd84d);
+  padding: 30px;
+  border-radius: 60px;
+  box-shadow: 0 20px 40px rgba(255, 200, 0, 0.6);
+
+  /* 指定変更 */
+  width: 25vh;
+  min-height: 75vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✨ タイトル強調 */
+.hero h1 {
+  font-size: 60px; /* ← 変更 */
+  letter-spacing: 12px;
+  font-weight: bold;
+  color: #a87400;
+
+  text-shadow:
+    0 0 15px #fff9c4,
+    0 0 30px #fff3a8,
+    0 0 45px rgba(255, 220, 120, 0.8);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* タイトルふわ光 */
+@keyframes titleGlow {
+  from {
+    text-shadow:
+      0 0 10px #fff9c4,
+      0 0 20px #fff3a8;
+  }
+  to {
+    text-shadow:
+      0 0 20px #fff9c4,
+      0 0 40px #ffe066,
+      0 0 60px rgba(255, 220, 120, 0.9);
+  }
+}
+
+/* 🌼 セクション */
+section {
+  margin-left: 90px;
+  background: #fff3a8;
+  padding: 25px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+  min-height: 60vh;
+}
+
+/* 🐥 通常タイトル */
+section h1 {
+  font-size: 30px;
+  background: #ffd84d;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 0 0 20px #fff6c5;
+}
+
+/* 📖 本文 */
+p {
+  font-size: 18px;
+}
+
+/*アイコン*/
+.icon {
+  width: 180px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+.kotazi {
+  width: 250px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+ul {
+  margin-left: 40px;
+}
+
+/* 🌟 ぽよん */
+h1, p, a, span, .icon, h2, h3, .content-img div {
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+h1:active,
+p:active,
+a:active,
+span:active,
+.icon:active,
+h2:active,
+h3:active,
+.content-img:active,
+.content-img2:active,
+div:active {
+  animation: poyon 0.3s ease;
+}
+
+@keyframes poyon {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* 🌼 スクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffe066;
+  border-radius: 20px;
+  border: 3px solid #fffdf2;
+}
+
+/* 画像 */
+.content-img {
+  width: 300px;
+  border-radius: 30px;
+  margin-left: 40px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+.content-img2 {
+  width: 600px;
+  border-radius: 60px;
+  margin-left: 80px;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.4);
+}
+
+/* リンクボタン */
+.button-area {
+  margin-left: 60px;
+}
+
+.vertical-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 220px;
+  background: #ffd84d;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #b38b00;
+  font-weight: bold;
+  box-shadow: 0 10px 25px rgba(255, 216, 77, 0.5);
+  transition: all 0.2s ease;
+}
+
+.vertical-btn:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.vertical-btn:active {
+  animation: poyon 0.3s ease;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+  <a href="ieinagami.html">ホーム</a>
+  <a href="bokunituite.html">僕について</a>
+  <a href="kotobamatome.html">言葉纏め</a>
+  <a href="links.html">リンク</a>
+</div>
+
+<!-- hero -->
+<div class="hero umyarisu">
+  <h1>うマりす語</h1>
+</div>
+
+<main>
+
+<section>
+
+<h1>名（文字）</h1>
+<div class="umyarisu">
+<h2>あラもな（大字）</h2>
+<img src="https://zpdic.s3.amazonaws.com/resource/6367/KakaoTalk_20251203_145552437.jpg" class="content-img">
+<img src="https://zpdic.s3.amazonaws.com/resource/6367/KakaoTalk_20251203_145552437_01.jpg" class="content-img">
+<h2>ジむもな（小字）</h2>
+<img src="https://zpdic.s3.amazonaws.com/resource/6367/KakaoTalk_20251203_145552437_04.jpg" class="content-img">
+<h2>のりもな（数字）</h2>
+<img src="https://zpdic.s3.amazonaws.com/resource/6367/KakaoTalk_20251203_145552437_02.jpg" class="content-img">
+</div>
+</section>
+
+<section>
+<h1>文方（文法）</h1>
+<p>・日本語と同じSOV</p>
+<p>・助動詞などどつける際連用形にする</p>
+<p>・助詞の後には読点を付け文末には句点を付ける</p>
+</section>
+
+<section>
+<h1>用いる一言葉（用語）</h1>
+<p>・表の中のか、さ、タ、た、ぱ、ら行の一番上から5個（「つぁ～つぉ」など）を清音という</p>
+<p>・清音ではないあ、な、は、ま行のことを半清音という</p>
+<p>・清音と半清音に小さいや行がついたような音（表で上から6~10番目）のことを拗音とい</p>
+<p>・清音の拗音が濁った音を濁音という</p>
+<p>・わ、ゐ、ゑ、をのことを半拗音という</p>
+<p>・んのことを撥音、っのことを促音、ーのことを長音という</p>
+</section>
+
+<section>
+<h1>方則（法則）</h1>
+<p>・形容詞は必ず「あ行」で終わる</p>
+<p>・動詞は「お行」で終わる</p>
+<p>・「名詞+っちゃ」と「動詞ー最後の一文字＋っちゃ」で形容詞を新しく作られる</p>
+<p>・用言や名詞に「ナ」を付けると形容詞にできる（500年程前の文法で連語的に今は残っている）</p>
+<p>・用言は名詞にそのままつけることで連体形と同じ使い方ができる</p>
+<p>・副詞は「う行で終わる」</p>
+<p>・用言を他の語彙と組み合わせて新しい語を作る際は前に着く法の用言の最後の一文字を省く</p>
+<p>・形式名詞の「モん」を使って新しい語を作る際は「モ」を省いて付ける</p>
+<p>・用言をい行にすると終わらせると名詞になる（りなどを付けたり最後の音の母音をい行にするなど）</p>
+<p>・用言に助詞や助動詞などを繋げるときは原型とする</p>
+<p>・音韻変化によって同じ行の清音と拗音と濁音は互いに音が置き換わってる場合もある</p>
+<p>・ら行とた行（てゃ行）[ら行とた行の拗音と濁音も]、ざ行（じゃ行）とダ行（づゃ行）も置き換わりがある</p>
+<p>・母音の融合など様々な音韻変化があったので表記と発音が乖離していることもけっこうある</p>
+<p>・促音と撥音と長音は互いに置き換わって発音する場合もある</p>
+<p>・い拗音がや行になったりなどに変化して発音することもある[にょ→よ　など]</p>
+</section>
+
+<section>
+<h1>品詞</h1>
+<p>・名詞（<span class="umyarisu">りなり</span>）</p>
+<p>・動詞（<span class="umyarisu">ぽんなり</span>）</p>
+<p>・形容詞（（<span class="umyarisu">ナなり</span>）[形容動詞はこの言語にはない]</p>
+<p>・助詞（（<span class="umyarisu">ねみマエなり</span>）</p>
+<p>・副詞（（<span class="umyarisu">まうなり</span>）</p>
+<p>・擬声語（（<span class="umyarisu">アうなり
+</span>）</p>
+</section>
+
+<section>
+<h1>世の設け定め</h1>
+
+<p>舞台は日本の小笠原諸島の約424.958km北東にある上防虎島（かみさきことう）である。</p>
+<p>その島は弥彦村ほどの大きさの島である。</p>
+<p>元からの先住民である「うマ」が上防虎島の西側の海辺にずっと住んでいる。</p>
+<p>この言葉はその者たちの話す言葉である</p>
+</section>
+
+<section>
+<div class="button-area">
+  <a href="https://zpdic.ziphil.com/dictionary/kamisakikogo1" class="vertical-btn" target="_blank">
+    <h2>辞書</h2>
+  </a>
+</div>
+</section>
+
+<section>
+<h1>例し文</h1>
+<h2>楷書</h2>
+<img src="https://zpdic.s3.amazonaws.com/resource/6367/%E7%84%A1%E9%A1%8C215_20250926113554_(1).png" class="content-img">
+<h2>草書</h2>
+<img src="https://zpdic.s3.amazonaws.com/resource/6367/G2AnexVakAAJTRe_(1).jfif" class="content-img">
+
+<div class="button-area">
+  <a href="https://x.com/i/status/1971453908288729301" class="vertical-btn" target="_blank">
+    <h2>音声</h2>
+  </a>
+</div>
+</section>
+
+</main>
+</body>
+</html>
+</body>
+</html>
